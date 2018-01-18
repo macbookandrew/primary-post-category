@@ -3,7 +3,7 @@
  * Plugin Name: Primary Post Category
  * Plugin URI: https://github.com/macbookandrew/primary-post-category
  * Description: A simple plugin to assign a primary and multiple secondary categories to posts
- * Version: 1.0
+ * Version: 1.0.0
  * Author: AndrewRMinion Design
  * Author URI: https://andrewrminion.com/
  * License: GPL2
