@@ -260,3 +260,30 @@ class WP_Widget_Primary_Categories extends WP_Widget {
     }
 
 }
+
+/**
+ * Add shortcode for searching content limited by a primary category
+ * @return string HTML output
+ */
+function ppc_search_form() {
+    add_filter( 'get_search_form', 'ppc_add_category_search' );
+    return get_search_form();
+}
+add_shortcode( 'primary_category_search_form', 'ppc_search_form' );
+
+/**
+ * Add dropdown with categories to search form
+ * @param  string $search_form HTML search form
+ * @return string HTML search form
+ */
+function ppc_add_category_search( $search_form ) {
+    $primary_category_args = array(
+        'taxonomy'      => 'primary_category',
+        'echo'          => 0,
+        'name'          => 'primary_category',
+        'value_field'   => 'slug',
+    );
+    $primary_category_filter = '<label for="primary_category">Primary Category</label>' . wp_dropdown_categories( $primary_category_args );
+
+    return str_replace( '<input type="submit"', $primary_category_filter . '<input type="submit"', $search_form );
+}
